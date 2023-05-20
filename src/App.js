@@ -3,8 +3,8 @@ import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Breweries from './pages/Breweries';
-import Home from './pages/Home';
+import Breweries from './pages/Breweries/Breweries';
+import Home from './pages/Home/Home';
 import HomeShowPage from './pages/HomeShowPage';
 
 function App() {
