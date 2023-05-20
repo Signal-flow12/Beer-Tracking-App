@@ -13,7 +13,7 @@ const Breweries = () => {
         address: "",
         website: "",
         image: "",
-        flagship: ""
+        flagship: "",
 
     });
 
@@ -31,6 +31,7 @@ const Breweries = () => {
         getBrewries();
     }, []);
 
+
     const updatedLikes = () => {
         let currentlikes = likes;
         currentlikes++;
@@ -42,16 +43,19 @@ const Breweries = () => {
             <>
                 {breweries.map((brewery, idx) =>{
                     return(
+                        <Link to={`/breweries/${brewery._id}`}>
                         <div key={idx}>
+                            
                             <h1>{brewery.name}</h1>
                             <h2>{brewery.address}</h2>
                             <h2><a href={brewery.website}target="_blank">{brewery.website}</a></h2>
-                            <img src={brewery.image}/>
+                            <img src={brewery.image} alt="{brewery.image}"/>
                             <h2>Flagship brew<br />{brewery.flagship}</h2>
-                            <button onClick={updatedLikes}>🍺 {likes}</button>
-                            <button>💛 Add to Favorites</button>
+                            <button className="button" onClick={updatedLikes}>🍺 {likes}</button>
+                            <button className="button">💛 Add to Favorites</button>
                             <hr />
                         </div>
+                        </Link>
                     )
                 })}
             </>
@@ -59,6 +63,7 @@ const Breweries = () => {
     }
 
     const handleChange = (e) => {
+        //console.log(e.target)
         setBreweryForm((previousFormState)=> ({
             ...previousFormState,
             [e.target.name]: e.target.value
@@ -68,13 +73,15 @@ const Breweries = () => {
     const handleSumbit = async (e) => {
         try{
             e.preventDefault();
-            await fetch(URL, {
+            const newBrewery = await fetch(URL, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(breweryForm)
-            })
+            });
+            console.log(await newBrewery.json())
+
             getBrewries();
             e.target.reset();
 
