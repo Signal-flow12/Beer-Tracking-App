@@ -14,8 +14,9 @@ const Breweries = () => {
         website: "",
         image: "",
         flagship: "",
-
+    
     });
+    console.log(breweryForm)
 
     const getBrewries = async () => {
         try{
@@ -43,19 +44,21 @@ const Breweries = () => {
             <>
                 {breweries.map((brewery, idx) =>{
                     return(
-                        <Link to={`/breweries/${brewery._id}`}>
+                        
                         <div key={idx}>
-                            
+                            <Link to={`/breweries/${brewery._id}`}>
                             <h1>{brewery.name}</h1>
+                            </Link>
                             <h2>{brewery.address}</h2>
                             <h2><a href={brewery.website}target="_blank">{brewery.website}</a></h2>
                             <img src={brewery.image} alt="{brewery.image}"/>
                             <h2>Flagship brew<br />{brewery.flagship}</h2>
+                            
                             <button className="button" onClick={updatedLikes}>🍺 {likes}</button>
                             <button className="button">💛 Add to Favorites</button>
                             <hr />
                         </div>
-                        </Link>
+                        
                     )
                 })}
             </>
@@ -101,16 +104,16 @@ const Breweries = () => {
                         <input type="text" name="name" placeholder="Enter Brewery Name" onChange={handleChange}/>
 
                         <label>Address</label>
-                        <input type="text" name="name" placeholder="Enter Address" onChange={handleChange}/>
+                        <input type="text" name="address" placeholder="Enter Address" onChange={handleChange}/>
 
                         <label>Website</label>
-                        <input type="text" name="name" placeholder="Enter Website" onChange={handleChange}/>
+                        <input type="text" name="website" placeholder="Enter Website" onChange={handleChange}/>
 
                         <label>Image</label>
-                        <input type="text" name="name" placeholder="Insert Image Link" onChange={handleChange}/>
+                        <input type="text" name="image" placeholder="Insert Image Link" onChange={handleChange}/>
 
                         <label>Flagship beer</label>
-                        <input type="text" name="name" placeholder="Enter Beer Name" onChange={handleChange}/>
+                        <input type="text" name="flagship" placeholder="Enter Beer Name" onChange={handleChange}/>
                         
                         <button>Submit</button>
 
