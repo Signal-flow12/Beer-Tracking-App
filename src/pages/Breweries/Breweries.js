@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import BreweryData from "../../components/BreweryData";
 
 const Breweries = () => {
 
@@ -33,7 +34,7 @@ const Breweries = () => {
     }, []);
 
 
-    const updatedLikes = () => {
+    const updatedLikes = (idx) => {
         let currentlikes = likes;
         currentlikes++;
         setLikes(currentlikes)
@@ -46,17 +47,7 @@ const Breweries = () => {
                     return(
                         
                         <div key={idx}>
-                            <Link to={`/breweries/${brewery._id}`}>
-                            <h1>{brewery.name}</h1>
-                            </Link>
-                            <h2>{brewery.address}</h2>
-                            <h2><a href={brewery.website}target="_blank">{brewery.website}</a></h2>
-                            <img src={brewery.image} alt="{brewery.image}"/>
-                            <h2>Flagship brew<br />{brewery.flagship}</h2>
-                            
-                            <button className="button" onClick={updatedLikes}>🍺 {likes}</button>
-                            <button className="button">💛 Add to Favorites</button>
-                            <hr />
+                            <BreweryData brewery={brewery} />
                         </div>
                         
                     )
@@ -96,7 +87,6 @@ const Breweries = () => {
 
     return (
         <>
-            <h1>NJ Breweries</h1>
                 <div className="breweryForm">
                     <h3>Know a brewery thats not on the list? <br /> Add it!</h3>
                     <form onSubmit={handleSumbit}>
