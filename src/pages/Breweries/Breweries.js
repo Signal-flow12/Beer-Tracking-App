@@ -19,7 +19,7 @@ const Breweries = () => {
     });
     console.log(breweryForm)
 
-    const getBrewries = async () => {
+    const getBreweries = async () => {
         try{
             let myBreweries = await fetch(URL);
             myBreweries =await myBreweries.json();
@@ -30,7 +30,7 @@ const Breweries = () => {
     }
 
     useEffect(() => {
-        getBrewries();
+        getBreweries();
     }, []);
 
 
@@ -76,7 +76,7 @@ const Breweries = () => {
             });
             console.log(await newBrewery.json())
 
-            getBrewries();
+            getBreweries();
             e.target.reset();
 
         }catch(err){
