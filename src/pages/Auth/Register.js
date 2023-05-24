@@ -11,8 +11,10 @@ const Register = ({signUp}) => {
         const createdUserToken = await signUp(input);
 
         if(createdUserToken) {
+          console.log(createdUserToken)
             navigate("/")
         }else {
+            console.log("signup failed")
             navigate("/auth/login")
         }
         setInput(insitalState);

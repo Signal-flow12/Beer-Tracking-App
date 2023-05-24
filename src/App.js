@@ -8,7 +8,10 @@ import Home from './pages/Home/Home';
 import Favorites from './pages/Favorites';
 import BreweryDetail from './pages/Breweries/BreweryDetail';
 import { setUserToken, clearUserToken } from './utils/authToken'
-import Register from './pages/Login';
+import Register from './pages/Auth/Register';
+import Login from './pages/Auth/Login';
+
+
 function App() {
 
   const [currentUser, setCurrentUser] = useState({});
@@ -58,6 +61,7 @@ function App() {
         configs
       )
       const user = await response.json();
+      console.log(JSON.stringify(user))
 
       setUserToken(user.token);
       setCurrentUser(user.currentUser);
@@ -69,7 +73,7 @@ function App() {
       setIsAuthenticated(false)
     }
   }
-
+// console.log(currentUser)
 
 
   return (
@@ -77,7 +81,8 @@ function App() {
       <h1>NJ Brew</h1>
       <Header user={currentUser} />
       <Routes>
-        <Route path="/auth/register" element={<Register isLoggedIn={isAuthenticated} signUp={registerUser} login={loginUser} user={currentUser} />} />
+        <Route path="/auth/register" element={<Register isLoggedIn={isAuthenticated} signUp={registerUser} user={currentUser} />} />
+        <Route path="/auth/login" element={<Login login={loginUser} isLoggedIn={isAuthenticated} user={currentUser} />}/>
         <Route path='/' element={<Home />} />
         <Route path='/favorites' element={<Favorites />} />
         <Route path='/breweries'> 
