@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { useState } from "react";
 
-const Login = ({signUp}) => {
+const Register = ({signUp}) => {
     const insitalState = { username: "", password: ""}
     const [input, setInput] = useState(insitalState);
     const navigate = useNavigate();
@@ -49,4 +49,4 @@ const Login = ({signUp}) => {
       );
     };
     
-    export default Login
+    export default Register

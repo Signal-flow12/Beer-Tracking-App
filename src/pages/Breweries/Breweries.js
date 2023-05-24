@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import BreweryData from "../../components/BreweryData";
 
 const Breweries = () => {

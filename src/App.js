@@ -5,12 +5,10 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Breweries from './pages/Breweries/Breweries';
 import Home from './pages/Home/Home';
-import HomeShowPage from './pages/HomeShowPage';
 import Favorites from './pages/Favorites';
 import BreweryDetail from './pages/Breweries/BreweryDetail';
 import { setUserToken, clearUserToken } from './utils/authToken'
-import Login from './pages/Login';
-
+import Register from './pages/Login';
 function App() {
 
   const [currentUser, setCurrentUser] = useState({});
@@ -79,8 +77,8 @@ function App() {
       <h1>NJ Brew</h1>
       <Header user={currentUser} />
       <Routes>
-        <Route path="/auth/register" element={<Login />} />
-        <Route path='/' element={<Home isLoggedIn={isAuthenticated} signUp={registerUser} login={loginUser} user={currentUser} />} />
+        <Route path="/auth/register" element={<Register isLoggedIn={isAuthenticated} signUp={registerUser} login={loginUser} user={currentUser} />} />
+        <Route path='/' element={<Home />} />
         <Route path='/favorites' element={<Favorites />} />
         <Route path='/breweries'> 
           <Route path='' element={<Breweries />} />

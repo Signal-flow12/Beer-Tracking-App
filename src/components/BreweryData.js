@@ -7,7 +7,7 @@ const BreweryData = ({brewery}) => {
             <h1>{brewery.name}</h1>
             </Link>
             <h2>{brewery.address}</h2>
-            <h2><a href={brewery.website}target="_blank">{brewery.website}</a></h2>
+            <h2><a href={brewery.website}target="_blank" rel="noopener noreferrer">{brewery.website}</a></h2>
             <img src={brewery.image} alt="{brewery.image}"/>
             <h2>Flagship brew<br />{brewery.flagship}</h2> 
             <h3> Likes: {brewery.likes}</h3>
