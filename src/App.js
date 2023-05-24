@@ -46,6 +46,7 @@ function App() {
       setIsAuthenticated(false);
     }
   }
+  //console.log(JSON.stringify(currentUser))
 
   const loginUser = async (data) => {
     try{
@@ -62,9 +63,10 @@ function App() {
       )
       const user = await response.json();
       console.log(JSON.stringify(user))
+      
 
       setUserToken(user.token);
-      setCurrentUser(user.currentUser);
+      setCurrentUser(user.user);
       setIsAuthenticated(user.loggedIn);
 
       return user
