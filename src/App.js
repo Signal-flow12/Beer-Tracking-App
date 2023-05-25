@@ -80,7 +80,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>NJ Brew</h1>
+      <h1 className="websiteName">NJ Brew</h1>
       <Header user={currentUser} />
       <Routes>
         <Route path="/auth/register" element={<Register isLoggedIn={isAuthenticated} signUp={registerUser} user={currentUser} />} />
