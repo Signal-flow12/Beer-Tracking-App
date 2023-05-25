@@ -6,7 +6,6 @@ const Breweries = () => {
 
     const URL = "https://njbeer-app-backend.onrender.com/breweries"
     
-    const [likes, setLikes ] = useState(0);
     const [breweries, setBreweries] = useState([]);
     const [breweryForm, setBreweryForm] = useState({
         name: "",
@@ -33,19 +32,13 @@ const Breweries = () => {
     }, []);
 
 
-    const updatedLikes = (idx) => {
-        let currentlikes = likes;
-        currentlikes++;
-        setLikes(currentlikes)
-    }
-
     const breweriesLoaded = (breweries) => {
         return(
             <>
                 {breweries.map((brewery, idx) =>{
                     return(
                         
-                        <div key={idx}>
+                        <div className="breweries" key={idx}>
                             <BreweryData brewery={brewery} />
                         </div>
                         

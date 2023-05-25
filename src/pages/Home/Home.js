@@ -35,17 +35,17 @@ const Home = () => {
         const randomBreweries = getRandomBreweries(breweries, 3);
 
         return(
-            <>
+            <div className="homeBreweries">
                 {randomBreweries.map((brewery, idx) =>{
                     return(
                         
-                        <div key={idx}>
+                        <div className="brewery" key={idx}>
                             <BreweryData brewery={brewery} />
                         </div>
                         
                     )
                 })}
-            </>
+            </div>
         )
     }
 
