@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import { useState, useEffect } from "react"
 
-const BreweryData = ({brewery}) => {
+const BreweryData = ({ brewery }) => {
+    
     return (
         <>
             <Link to={`/breweries/${brewery._id}`}>
@@ -13,7 +13,7 @@ const BreweryData = ({brewery}) => {
             <h3>Flagship brew: </h3>
             <h2>{brewery.flagship}</h2> 
             <h3> Likes: {brewery.likes}</h3>
-            {/* <button className="button" onClick={handleLikes}>🍺 </button> */}
+            {/* <button className="button" onClick={() => onLike(brewery._id)}>Like Button</button> */}
             <button className="button">💛 Add to Favorites</button>
             <hr />
         </>

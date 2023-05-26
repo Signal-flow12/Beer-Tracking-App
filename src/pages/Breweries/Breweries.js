@@ -1,21 +1,23 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import BreweryData from "../../components/BreweryData";
+import BreweryForm from "../../components/BreweryForm";
 
 const Breweries = () => {
 
-    const URL = "https://njbeer-app-backend.onrender.com/breweries"
+    // const URL = "https://njbeer-app-backend.onrender.com/breweries"
+    const URL = "http://localhost:4000/breweries"
     
     const [breweries, setBreweries] = useState([]);
-    const [breweryForm, setBreweryForm] = useState({
-        name: "",
-        address: "",
-        website: "",
-        image: "",
-        flagship: "",
+    // const [breweryForm, setBreweryForm] = useState({
+    //     name: "",
+    //     address: "",
+    //     website: "",
+    //     image: "",
+    //     flagship: "",
     
-    });
-    console.log(breweryForm)
+    // });
+    // console.log(breweryForm)
 
     const getBreweries = async () => {
         try{
@@ -39,7 +41,8 @@ const Breweries = () => {
                     return(
                         
                         <div className="breweries" key={idx}>
-                            <BreweryData brewery={brewery} />
+                            <BreweryData brewery={brewery}/>
+                            {console.log(brewery)}
                         </div>
                         
                     )
@@ -48,38 +51,38 @@ const Breweries = () => {
         )
     }
 
-    const handleChange = (e) => {
-        //console.log(e.target)
-        setBreweryForm((previousFormState)=> ({
-            ...previousFormState,
-            [e.target.name]: e.target.value
-        }))
-    }
+    // const handleChange = (e) => {
+    //     //console.log(e.target)
+    //     setBreweryForm((previousFormState)=> ({
+    //         ...previousFormState,
+    //         [e.target.name]: e.target.value
+    //     }))
+    // }
 
-    const handleSumbit = async (e) => {
-        try{
-            e.preventDefault();
-            const newBrewery = await fetch(URL, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(breweryForm)
-            });
-            console.log(await newBrewery.json())
+    // const handleSumbit = async (e) => {
+    //     try{
+    //         e.preventDefault();
+    //         const newBrewery = await fetch(URL, {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json"
+    //             },
+    //             body: JSON.stringify(breweryForm)
+    //         });
+    //         console.log(await newBrewery.json())
 
-            getBreweries();
-            e.target.reset();
+    //         getBreweries();
+    //         e.target.reset();
 
-        }catch(err){
-            console.log(err)
-        }
-    }
+    //     }catch(err){
+    //         console.log(err)
+    //     }
+    // }
 
 
     return (
         <>
-                <div className="breweryForm">
+                {/* <div className="breweryForm">
                     <h3>Know a brewery thats not on the list? <br /> Add it!</h3>
                     <form onSubmit={handleSumbit}>
                         <label>Brewery</label>
@@ -100,7 +103,8 @@ const Breweries = () => {
                         <button>Submit</button>
 
                     </form>
-                </div>
+                </div> */}
+            <BreweryForm getBreweries={getBreweries}/>
             {breweries.length ? breweriesLoaded(breweries) : <h2>Preparing NJ breweries</h2>}
         </>
 
