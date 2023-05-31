@@ -7,6 +7,8 @@ NJ brew is a website that will house a collection of New Jeresey craft beer brew
 
  * 1-5 star ratings and comment section with the Brewerys detail page.
 
+ * Have the homepage pick random breweries based on ratings.
+
  * Footer link that will implement https://www.openbrewerydb.org/documentation API to direct users to a page that will list breweries outside of NJ. 
 
  * Change color of text to Primary for text inputs. 
