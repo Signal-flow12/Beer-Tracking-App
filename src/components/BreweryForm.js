@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TextField, Button } from "@mui/material";
+import { TextField, Button, Container } from "@mui/material";
 
 const BreweryForm = ({ getBreweries}) => {
     
@@ -45,11 +45,10 @@ const BreweryForm = ({ getBreweries}) => {
 
     return (
         <>
-                <div className="breweryForm">
-                    {/* <h3>Know a brewery thats not on the list? <br /> Add it!</h3> */}
-                    <form onSubmit={handleSumbit}>
+                <Container className="breweryForm">
+                    <form className="form" onSubmit={handleSumbit}>
                     
-                        <TextField required id="outlined-required" label="Required" type="text" name="name" placeholder="Enter Brewery Name" onChange={handleChange}/>
+                        <TextField color="primary" required id="outlined-required" label="Required" type="text" name="name" placeholder="Enter Brewery Name" onChange={handleChange}/>
 
                         
                         <TextField required id="outlined-required" label="Required" name="address" placeholder="Enter Address" onChange={handleChange}/>
@@ -60,10 +59,10 @@ const BreweryForm = ({ getBreweries}) => {
 
                         <TextField required id="outlined-required" label="Required" name="flagship" placeholder="Enter Beer Name" onChange={handleChange}/>
                         
-                        <Button size="large" variant="contained">Add it!</Button>
+                        <Button size="large" color="primary" variant="contained">Add it!</Button>
 
                     </form>
-                </div>
+                </Container>
         </>
 
     )

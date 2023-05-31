@@ -10,9 +10,22 @@ import BreweryDetail from './pages/Breweries/BreweryDetail';
 import { setUserToken, clearUserToken } from './utils/authToken'
 import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
-import { CssBaseline} from '@mui/material';
+import { CssBaseline, Typography} from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material';
 
-
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#b59410'
+    },
+    secondary: {
+      main: '#bdbdbd'
+    },
+    background: {
+      default: '#505050',
+  },
+  }
+});
 
 function App() {
 
@@ -81,10 +94,13 @@ function App() {
 
 
   return (
-
+    <ThemeProvider theme={theme}>
     <div className="App">
       <CssBaseline />
+      <Typography>
       <h1 className="websiteName">NJ Brew</h1>
+
+      </Typography>
       <Header user={currentUser} />
       <Routes>
         <Route path="/auth/register" element={<Register isLoggedIn={isAuthenticated} signUp={registerUser} user={currentUser} />} />
@@ -104,6 +120,7 @@ function App() {
 
       <Footer />
     </div>
+      </ThemeProvider>
 
   );
 }

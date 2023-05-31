@@ -4,6 +4,7 @@
     import BreweryForm from "../../components/BreweryForm";
     import { getUserToken } from "../../utils/authToken";
     import { Button, TextField } from "@mui/material";
+ 
 
     const Breweries = ({ user }) => {
 
@@ -91,7 +92,7 @@
         return (
             <>  <div className="search">
                     <TextField size="small" id="outlined-search" label="Search field" type="search" ref={inputRef}/> 
-                    <Button size="small" variant="contained" onClick={handleSubmit} type="submit">Search</Button>
+                    <Button size="small" variant="outlined" onClick={handleSubmit} type="submit">Search</Button>
                 </div>
                 <div className="forms">
                     <h3>Know a brewery thats not on the list? </h3>
