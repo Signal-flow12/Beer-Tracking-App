@@ -13,6 +13,10 @@ NJ Brew is a website that will house a collection of New Jersey craft beer brewe
 
  * Change color of text to Primary for text inputs. 
 
+ * Add dropdown in nav or popup modal for signin and signup. 
+
+ * Add a brewery must vist/wishlist page.
+
  ## Tech Used
 
  * Create-react-app
