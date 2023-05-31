@@ -28,7 +28,7 @@ const BreweryDetail = () => {
             <h2>{brewery.address}</h2>
             <h2><a className="link" href={brewery.website}target="_blank">{brewery.website}</a></h2>
             <img className="img" src={brewery.image} alt={brewery.image}    />  
-            <h2>Flagship brew<br />{brewery.flagship}</h2>                     
+            <h3 className="flagship">Flagship brew: <br  />{brewery.flagship}</h3>                      
         </div>
 
         )
