@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { Button } from "@mui/material";
 
 const BreweryData = ({ brewery, likes}) => {
     if (!brewery) {
@@ -12,9 +13,8 @@ const BreweryData = ({ brewery, likes}) => {
             <img className="img" src={brewery.image} alt="{brewery.image}"/>
             </Link>
             <h2><a className="link" href={brewery.website}target="_blank" rel="noopener noreferrer">{brewery.website}</a></h2> 
-            <h3>Flagship brew: </h3>
-            <h2>{brewery.flagship}</h2>  
-            <h2>Likes:{likes}</h2>       
+            <h3 className="flagship">Flagship brew: <br  />{brewery.flagship}</h3> 
+            <Button size="large" color="primary" variant="contained">Add to Favorites!</Button>      
         </>
     )
 }
