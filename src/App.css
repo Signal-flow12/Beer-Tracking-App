@@ -36,9 +36,14 @@ h1 {
   flex: 1;
 }
 
+.formBox{
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.591);
+  border: 1px solid black;
+}
+
 .loginField {
   margin-bottom: 10px;
-  border: 1px solid black;
 }
 
 .loginButton{
@@ -49,7 +54,7 @@ h1 {
 
 .search {
   display: flex;
-  margin-top: 5px;
+  margin-top: 10px;
 
 } 
 

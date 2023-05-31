@@ -30,6 +30,7 @@ const Login = ({login}) => {
   return (
     <div className='login'>
       <form onSubmit={handleSubmit}>
+        <div className='formBox'>
         <div>
           <label htmlFor="username">Username: </label>
           <TextField className='loginField'
@@ -57,6 +58,7 @@ const Login = ({login}) => {
         <br />
         <div className='loginButton'>
          <Button variant="contained" type="submit" value="Login">Login</Button>
+        </div>
         </div>
       </form>
     </div>
