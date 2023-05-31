@@ -22,3 +22,7 @@ NJ brew is a website that will house a collection of New Jeresey craft beer brew
 
  * render: https://njbeer-app-backend.onrender.com/breweries
  * netlify: https://njbrew-app.netlify.app/breweries
+
+
+![Screenshot 2023-05-31 at 4 24 00 PM](https://github.com/Signal-flow12/NJBrew-App-Frontend/assets/122571827/72201066-f6a3-41f1-9096-ab648c7c06cb)
+![Screenshot 2023-05-31 at 6 42 25 PM](https://github.com/Signal-flow12/NJBrew-App-Frontend/assets/122571827/aee6d69e-ed51-4bb9-af8a-450bc2945749)
