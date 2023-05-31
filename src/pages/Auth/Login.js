@@ -31,6 +31,7 @@ const Login = ({login}) => {
     <div className='login'>
       <form onSubmit={handleSubmit}>
         <div className='formBox'>
+          <h3>Login</h3>
         <div>
           <label htmlFor="username">Username: </label>
           <TextField className='loginField'
@@ -52,6 +53,7 @@ const Login = ({login}) => {
             required id="password"
             name="password"
             value={input.password}
+            placeholder='password'
             onChange={handleChange}
           />
         </div>

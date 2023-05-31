@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import { useState } from "react";
+import { TextField, Button } from "@mui/material";
 
 const Register = ({signUp}) => {
     const insitalState = { username: "", password: ""}
@@ -24,30 +25,40 @@ const Register = ({signUp}) => {
      };
 
      return (
-        <>
-          <h1>Register</h1>
+        <div className="login">
           <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Name: </label>
-            <input
-              id="username"
+            <div className='formBox'>
+            <h3>Signup</h3>
+              <label htmlFor="username">Username: </label>
+              <TextField className='loginField'
+              color="secondary"
+              size='small'
+              required id="username"
               name="username"
               value={input.username}
+              placeholder='username'
               onChange={handleChange}
-            />
-            <br />
-            <br />
-            <label htmlFor="password">Password: </label>
-            <input
-              id="password"
+              />
+              <br />
+              <br />
+              <label htmlFor="password">Password: </label>
+              <TextField className='loginField'
+              color='secondary'
+              size='small'
+              required id="password"
               name="password"
               value={input.password}
               onChange={handleChange}
-            />
-            <br />
-            <br />
-            <input type="submit" value="Sign Up" />
+              placeholder='password'
+              />
+              <br />
+              <br />
+              <div className="loginButton">
+              <Button variant="contained" type="submit" value="Login">Signup</Button>
+              </div>
+            </div>
           </form>
-        </>
+        </div>
       );
     };
     
