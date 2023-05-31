@@ -1,6 +1,6 @@
 # NJ Brew 
 
-NJ brew is a website that will house a collection of New Jeresey craft beer breweries. Users will be able to create an account via the signup link in the navigator bar. Once a user signed in they will be redicrected to the homepage. The home page will be a random selection of 3 breweries. A user can select a brewery to get further details. Users can also go to the Breweries page via the navigaton bar. Here user can scroll through the entire list of breweries. They will also have a search bar for ease of navigation. If there is a brewery that is not on the list the user can add it! 
+NJ Brew is a website that will house a collection of New Jersey craft beer breweries. Users will be able to create an account via the signup link in the navigation bar. Once a user signs in, they will be redirected to the homepage. The homepage will feature a random selection of three breweries. Users can select a brewery to access further details. Additionally, users can navigate to the Breweries page using the navigation bar, where they can scroll through the entire list of breweries. A search bar will be available for easy navigation. If a brewery is not listed, users can add it to the website.
 
 ## Future features to be implemented
  * A favorites button that will put that brewery in a user specfic favorites tab. (Please note the current favorites tab is not yet functional)
