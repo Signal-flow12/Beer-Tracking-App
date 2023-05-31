@@ -4,12 +4,13 @@
     import BreweryForm from "../../components/BreweryForm";
     import { useParams } from "react-router";
     import { getUserToken } from "../../utils/authToken";
+    import { Button, TextField } from "@mui/material";
 
     const Breweries = ({ user }) => {
 
         const { breweryId } = useParams();
         // const URL = "https://njbeer-app-backend.onrender.com/breweries"
-        const URL = "http://localhost:4000/breweries"
+        // const URL = "http://localhost:4000/breweries"
         
         const [breweries, setBreweries] = useState([]);
         const [filteredBreweries, setFilteredBreweries] = useState(breweries)
@@ -89,9 +90,13 @@
         }
 
         return (
-            <>
-                    Search: <input type="text" ref={inputRef}/> <input onClick={handleSubmit} type="submit"/>
-                <BreweryForm getBreweries={getBreweries}/>
+            <>  
+                    <TextField className="search" size="small" id="outlined-search" label="Search field" type="search" ref={inputRef}/> 
+                    <Button size="small" variant="contained" onClick={handleSubmit} type="submit">Search</Button>
+                <div className="forms">
+                    <h3>Know a brewery thats not on the list? <br /> Add it!</h3>
+                    <BreweryForm getBreweries={getBreweries}/>
+                </div>
                 {filteredBreweries.length ? breweriesLoaded(filteredBreweries) : <h2>Preparing NJ breweries</h2>}
             </>
 

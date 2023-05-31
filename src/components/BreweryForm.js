@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { TextField, Button } from "@mui/material";
 
 const BreweryForm = ({ getBreweries}) => {
     
@@ -45,24 +46,21 @@ const BreweryForm = ({ getBreweries}) => {
     return (
         <>
                 <div className="breweryForm">
-                    <h3>Know a brewery thats not on the list? <br /> Add it!</h3>
+                    {/* <h3>Know a brewery thats not on the list? <br /> Add it!</h3> */}
                     <form onSubmit={handleSumbit}>
-                        <label>Brewery</label>
-                        <input type="text" name="name" placeholder="Enter Brewery Name" onChange={handleChange}/>
+                    
+                        <TextField required id="outlined-required" label="Required" type="text" name="name" placeholder="Enter Brewery Name" onChange={handleChange}/>
 
-                        <label>Address</label>
-                        <input type="text" name="address" placeholder="Enter Address" onChange={handleChange}/>
-
-                        <label>Website</label>
-                        <input type="text" name="website" placeholder="Enter Website" onChange={handleChange}/>
-
-                        <label>Image</label>
-                        <input type="text" name="image" placeholder="Insert Image Link" onChange={handleChange}/>
-
-                        <label>Flagship beer</label>
-                        <input type="text" name="flagship" placeholder="Enter Beer Name" onChange={handleChange}/>
                         
-                        <button>Submit</button>
+                        <TextField required id="outlined-required" label="Required" name="address" placeholder="Enter Address" onChange={handleChange}/>
+
+                        <TextField required id="outlined-required" label="Required" name="website" placeholder="Enter Website" onChange={handleChange}/>
+
+                        <TextField required id="outlined-required" label="Required" name="image" placeholder="Insert Image Link" onChange={handleChange}/>
+
+                        <TextField required id="outlined-required" label="Required" name="flagship" placeholder="Enter Beer Name" onChange={handleChange}/>
+                        
+                        <Button size="large" variant="contained">Submit</Button>
 
                     </form>
                 </div>
