@@ -26,7 +26,7 @@ const BreweryDetail = () => {
         <div className="brewery">
             <h1>{brewery.name}</h1>
             <h2>{brewery.address}</h2>
-            <h2><a className="link" href={brewery.website}target="_blank">{brewery.website}</a></h2>
+            <h2><a className="link" href={brewery.website} target="_blank" rel="noreferrer">{brewery.website}</a></h2>
             <img className="img" src={brewery.image} alt={brewery.image}    />  
             <h3 className="flagship">Flagship brew: <br  />{brewery.flagship}</h3>                      
         </div>
@@ -36,7 +36,9 @@ const BreweryDetail = () => {
 
     useEffect(() => {
         getBreweryDetails();
+        //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
     return (
         <>
             {brewery ? breweryLoaded() : <h2> Grab a brew while we load your brewery!</h2>}
