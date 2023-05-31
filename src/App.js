@@ -10,7 +10,8 @@ import BreweryDetail from './pages/Breweries/BreweryDetail';
 import { setUserToken, clearUserToken } from './utils/authToken'
 import Register from './pages/Auth/Register';
 import Login from './pages/Auth/Login';
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { CssBaseline} from '@mui/material';
+
 
 
 function App() {
@@ -80,6 +81,7 @@ function App() {
 
 
   return (
+
     <div className="App">
       <CssBaseline />
       <h1 className="websiteName">NJ Brew</h1>
@@ -102,6 +104,7 @@ function App() {
 
       <Footer />
     </div>
+
   );
 }
 

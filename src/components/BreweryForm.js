@@ -60,7 +60,7 @@ const BreweryForm = ({ getBreweries}) => {
 
                         <TextField required id="outlined-required" label="Required" name="flagship" placeholder="Enter Beer Name" onChange={handleChange}/>
                         
-                        <Button size="large" variant="contained">Submit</Button>
+                        <Button size="large" variant="contained">Add it!</Button>
 
                     </form>
                 </div>

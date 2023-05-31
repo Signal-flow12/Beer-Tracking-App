@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom"
+import { Box } from "@mui/material"
 
 const Header = ({ user }) => {
     return (
         <div className="header">
-            <Link to='/breweries'>Breweries</Link>
-            <Link to='/'>Home</Link>
-            <Link to='/favorites'>Favorites</Link>
-            <Link to='/auth/register'>Signup</Link>
-            <Link to='/auth/login'>Login</Link>
+            <Link className="navText" to='/breweries'>Breweries</Link>
+            <Link className="navText" to='/'>Home</Link>
+            <Link className="navText" to='/favorites'>Favorites</Link>
+            <Link className="navText" to='/auth/register'>Signup</Link>
+            <Link className="navText" to='/auth/login'>Login</Link>
                 <div>
                 <h4>Logged in as: <br /> {user.username}</h4>
                 </div>

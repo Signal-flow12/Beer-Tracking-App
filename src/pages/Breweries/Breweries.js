@@ -9,7 +9,7 @@
     const Breweries = ({ user }) => {
 
         const { breweryId } = useParams();
-        // const URL = "https://njbeer-app-backend.onrender.com/breweries"
+        const URL = "https://njbeer-app-backend.onrender.com/breweries"
         // const URL = "http://localhost:4000/breweries"
         
         const [breweries, setBreweries] = useState([]);
@@ -79,7 +79,7 @@
                     {filteredBreweries.map((brewery, idx) =>{
                         return(
                             <div className="breweries" key={idx}>
-                                <BreweryData brewery={brewery} likes={brewery.likes.length} />
+                                <BreweryData brewery={brewery} />
                                 <button onClick={() => handleLike(brewery._id)}>Like</button>
                             </div>
                             
@@ -94,7 +94,7 @@
                     <TextField className="search" size="small" id="outlined-search" label="Search field" type="search" ref={inputRef}/> 
                     <Button size="small" variant="contained" onClick={handleSubmit} type="submit">Search</Button>
                 <div className="forms">
-                    <h3>Know a brewery thats not on the list? <br /> Add it!</h3>
+                    <h3>Know a brewery thats not on the list? </h3>
                     <BreweryForm getBreweries={getBreweries}/>
                 </div>
                 {filteredBreweries.length ? breweriesLoaded(filteredBreweries) : <h2>Preparing NJ breweries</h2>}
