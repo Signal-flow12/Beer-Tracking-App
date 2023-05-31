@@ -98,8 +98,7 @@ function App() {
     <div className="App">
       <CssBaseline />
       <Typography>
-      <h1 className="websiteName">NJ Brew</h1>
-
+        <h1>NJ Brew</h1>
       </Typography>
       <Header user={currentUser} />
       <Routes>

@@ -1,5 +1,6 @@
 import  {useNavigate} from 'react-router-dom'
 import {useState} from 'react'
+import { TextField, Button } from '@mui/material';
 
 const Login = ({login}) => {
   const initialState = { username: "", password: ""}
@@ -27,31 +28,39 @@ const Login = ({login}) => {
 
 
   return (
-    <>
-      <h1>Login</h1>
+    <div className='login'>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Name: </label>
-        <input
-          id="username"
-          name="username"
-          value={input.username}
-          onChange={handleChange}
-        />
+        <div>
+          <label htmlFor="username">Username: </label>
+          <TextField className='loginField'
+            color="secondary"
+            size='small'
+            required id="username"
+            name="username"
+            value={input.username}
+            placeholder='username'
+            onChange={handleChange}
+          />
+        </div>
         <br />
+        <div>
+          <label htmlFor="password">Password: </label>
+          <TextField className='loginField'
+            color='secondary'
+            size='small'
+            required id="password"
+            name="password"
+            value={input.password}
+            onChange={handleChange}
+          />
+        </div>
         <br />
-        <label htmlFor="password">Password: </label>
-        <input
-          id="password"
-          name="password"
-          value={input.password}
-          onChange={handleChange}
-        />
-        <br />
-        <br />
-        <input type="submit" value="Login" />
+        <div className='loginButton'>
+         <Button variant="contained" type="submit" value="Login">Login</Button>
+        </div>
       </form>
-    </>
-  );
+    </div>
+  );  
 };
 
 export default Login;

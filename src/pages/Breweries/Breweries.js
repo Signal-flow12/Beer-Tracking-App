@@ -2,76 +2,59 @@
     import { useState, useRef} from "react";
     import BreweryData from "../../components/BreweryData";
     import BreweryForm from "../../components/BreweryForm";
-    import { getUserToken } from "../../utils/authToken";
     import { Button, TextField } from "@mui/material";
+
  
 
-    const Breweries = ({ user }) => {
+    const Breweries = () => {
 
-        // const { breweryId } = useParams();
+
         const URL = "https://njbeer-app-backend.onrender.com/breweries"
-        // const URL = "http://localhost:4000/breweries"
         
         const [breweries, setBreweries] = useState([]);
         const [filteredBreweries, setFilteredBreweries] = useState(breweries)
         const inputRef = useRef(null)
 
+        //search
         const searchBrewery = (searchString) => {
             return breweries.filter((brewery) => {
-              return brewery.name.toLowerCase().includes(searchString.toLowerCase())
-            })
-          }
-
+              return (
+                brewery.name &&
+                brewery.name.toLowerCase().includes(searchString.toLowerCase())
+              );
+            });
+          };
+          //handle search submit
           const handleSubmit = (e) => {
-            const search = inputRef.current.value
-            if (search === ""){
-              setFilteredBreweries(breweries)
-              return 1
+            e.preventDefault();
+            const search = inputRef.current.value;
+            if (search === "") {
+              setFilteredBreweries(breweries);
+            } else {
+              setFilteredBreweries(searchBrewery(search));
             }
-            setFilteredBreweries(searchBrewery(search))
-          }
+          };
     
-        const [likes, setLikes] = useState(0)
 
+        //fetch breweries 
         const getBreweries = async () => {
             try{
                 let myBreweries = await fetch(URL);
                 myBreweries = await myBreweries.json();
                 setBreweries(myBreweries);
-                setFilteredBreweries(myBreweries)
             }catch(err){
                 console.log(err)
             }
         }
-
+        //call getBreweires function
         useEffect(() => {
             getBreweries();
         }, []);
 
-        const handleLike = async (breweryId) => {
-            try{
-                const response = await fetch(`http://localhost:4000/breweries/${breweryId}/likes`, {
-                method: 'POST',
-                headers: {
-                    'Authorization': `bearer ${getUserToken()}`,
-		            'Content-Type': 'application/json'
-                }
-            });
-            //console.log(getUserToken)
-            const updatedBrewery = await response.json();
-            console.log(updatedBrewery)
-            const isLiked = updatedBrewery.likes.includes(user._id);
-            const addLikes = isLiked ? likes + 1 : likes
-            setLikes(addLikes)
-            setBreweries(updatedBrewery)
-
-            }catch(err){
-                console.log(err)
-            }
-        }
-
-
-        
+        useEffect(() => {
+            setFilteredBreweries(breweries);
+          }, [breweries]);
+       
         const breweriesLoaded = (filteredBreweries) => {
  
             return(
@@ -80,7 +63,6 @@
                         return(
                             <div className="breweries" key={idx}>
                                 <BreweryData brewery={brewery} />
-                                <button onClick={() => handleLike(brewery._id)}>Like</button>
                             </div>
                             
                         )
@@ -90,10 +72,21 @@
         }
 
         return (
-            <>  <div className="search">
-                    <TextField size="small" id="outlined-search" label="Search field" type="search" ref={inputRef}/> 
-                    <Button size="small" variant="outlined" onClick={handleSubmit} type="submit">Search</Button>
+            <>  <div>
+                    <form className="search" onSubmit={handleSubmit}>
+                        <TextField
+                        size="small"
+                        id="outlined-search"
+                        label="Search field"
+                        type="search"
+                        inputRef={inputRef}
+                        />
+                        <Button size="small" variant="outlined" type="submit">
+                        Search
+                        </Button>
+                    </form>
                 </div>
+
                 <div className="forms">
                     <h3>Know a brewery thats not on the list? </h3>
                     <BreweryForm getBreweries={getBreweries}/>
