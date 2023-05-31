@@ -7,8 +7,8 @@ const BreweryDetail = () => {
     
     const [brewery, setBrewery] = useState(null);
     const { breweryId } = useParams();
-    // const URL = `https://njbeer-app-backend.onrender.com/breweries/${breweryId}`
-    const URL = `http://localhost:4000/breweries/${breweryId}`
+    const URL = `https://njbeer-app-backend.onrender.com/breweries/${breweryId}`
+    // const URL = `http://localhost:4000/breweries/${breweryId}`
 
     const getBreweryDetails = async () => {
         try{

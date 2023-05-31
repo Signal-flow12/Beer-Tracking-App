@@ -3,8 +3,8 @@ import { TextField, Button } from "@mui/material";
 
 const BreweryForm = ({ getBreweries}) => {
     
-        // const URL = "https://njbeer-app-backend.onrender.com/breweries"
-        const URL = "http://localhost:4000/breweries"
+        const URL = "https://njbeer-app-backend.onrender.com/breweries"
+        // const URL = "http://localhost:4000/breweries"
 
     const [breweryForm, setBreweryForm] = useState({
         name: "",
