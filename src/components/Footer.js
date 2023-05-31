@@ -1,6 +1,6 @@
 const Footer = () => {
     return (
-        <h1>This is my Footer</h1>
+        <h5>Looking for a brewery outside of NJ? Click here!</h5>
     )
 }
 
