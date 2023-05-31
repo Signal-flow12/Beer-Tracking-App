@@ -1,114 +1,101 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import BreweryData from "../../components/BreweryData";
-import BreweryForm from "../../components/BreweryForm";
+    import { useEffect } from "react";
+    import { useState, useRef} from "react";
+    import BreweryData from "../../components/BreweryData";
+    import BreweryForm from "../../components/BreweryForm";
+    import { useParams } from "react-router";
+    import { getUserToken } from "../../utils/authToken";
 
-const Breweries = () => {
+    const Breweries = ({ user }) => {
 
-    // const URL = "https://njbeer-app-backend.onrender.com/breweries"
-    const URL = "http://localhost:4000/breweries"
+        const { breweryId } = useParams();
+        // const URL = "https://njbeer-app-backend.onrender.com/breweries"
+        const URL = "http://localhost:4000/breweries"
+        
+        const [breweries, setBreweries] = useState([]);
+        const [filteredBreweries, setFilteredBreweries] = useState(breweries)
+        const inputRef = useRef(null)
+
+        const searchBrewery = (searchString) => {
+            return breweries.filter((brewery) => {
+              return brewery.name.toLowerCase().includes(searchString.toLowerCase())
+            })
+          }
+
+          const handleSubmit = (e) => {
+            const search = inputRef.current.value
+            if (search === ""){
+              setFilteredBreweries(breweries)
+              return 1
+            }
+            setFilteredBreweries(searchBrewery(search))
+          }
     
-    const [breweries, setBreweries] = useState([]);
-    // const [breweryForm, setBreweryForm] = useState({
-    //     name: "",
-    //     address: "",
-    //     website: "",
-    //     image: "",
-    //     flagship: "",
-    
-    // });
-    // console.log(breweryForm)
+        const [likes, setLikes] = useState(0)
 
-    const getBreweries = async () => {
-        try{
-            let myBreweries = await fetch(URL);
-            myBreweries =await myBreweries.json();
-            setBreweries(myBreweries);
-        }catch(err){
-            console.log(err)
+        const getBreweries = async () => {
+            try{
+                let myBreweries = await fetch(URL);
+                myBreweries = await myBreweries.json();
+                setBreweries(myBreweries);
+                setFilteredBreweries(myBreweries)
+            }catch(err){
+                console.log(err)
+            }
         }
-    }
 
-    useEffect(() => {
-        getBreweries();
-    }, []);
+        useEffect(() => {
+            getBreweries();
+        }, []);
+
+        const handleLike = async (breweryId) => {
+            try{
+                const response = await fetch(`http://localhost:4000/breweries/${breweryId}/likes`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `bearer ${getUserToken()}`,
+		            'Content-Type': 'application/json'
+                }
+            });
+            //console.log(getUserToken)
+            const updatedBrewery = await response.json();
+            console.log(updatedBrewery)
+            const isLiked = updatedBrewery.likes.includes(user._id);
+            const addLikes = isLiked ? likes + 1 : likes
+            setLikes(addLikes)
+            setBreweries(updatedBrewery)
+
+            }catch(err){
+                console.log(err)
+            }
+        }
 
 
-    const breweriesLoaded = (breweries) => {
-        return(
+        
+        const breweriesLoaded = (filteredBreweries) => {
+ 
+            return(
+                <>
+                    {filteredBreweries.map((brewery, idx) =>{
+                        return(
+                            <div className="breweries" key={idx}>
+                                <BreweryData brewery={brewery} likes={brewery.likes.length} />
+                                <button onClick={() => handleLike(brewery._id)}>Like</button>
+                            </div>
+                            
+                        )
+                    })}
+                </>
+            )
+        }
+
+        return (
             <>
-                {breweries.map((brewery, idx) =>{
-                    return(
-                        
-                        <div className="breweries" key={idx}>
-                            <BreweryData brewery={brewery}/>
-                            {console.log(brewery)}
-                        </div>
-                        
-                    )
-                })}
+                    Search: <input type="text" ref={inputRef}/> <input onClick={handleSubmit} type="submit"/>
+                <BreweryForm getBreweries={getBreweries}/>
+                {filteredBreweries.length ? breweriesLoaded(filteredBreweries) : <h2>Preparing NJ breweries</h2>}
             </>
+
         )
     }
-
-    // const handleChange = (e) => {
-    //     //console.log(e.target)
-    //     setBreweryForm((previousFormState)=> ({
-    //         ...previousFormState,
-    //         [e.target.name]: e.target.value
-    //     }))
-    // }
-
-    // const handleSumbit = async (e) => {
-    //     try{
-    //         e.preventDefault();
-    //         const newBrewery = await fetch(URL, {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json"
-    //             },
-    //             body: JSON.stringify(breweryForm)
-    //         });
-    //         console.log(await newBrewery.json())
-
-    //         getBreweries();
-    //         e.target.reset();
-
-    //     }catch(err){
-    //         console.log(err)
-    //     }
-    // }
-
-
-    return (
-        <>
-                {/* <div className="breweryForm">
-                    <h3>Know a brewery thats not on the list? <br /> Add it!</h3>
-                    <form onSubmit={handleSumbit}>
-                        <label>Brewery</label>
-                        <input type="text" name="name" placeholder="Enter Brewery Name" onChange={handleChange}/>
-
-                        <label>Address</label>
-                        <input type="text" name="address" placeholder="Enter Address" onChange={handleChange}/>
-
-                        <label>Website</label>
-                        <input type="text" name="website" placeholder="Enter Website" onChange={handleChange}/>
-
-                        <label>Image</label>
-                        <input type="text" name="image" placeholder="Insert Image Link" onChange={handleChange}/>
-
-                        <label>Flagship beer</label>
-                        <input type="text" name="flagship" placeholder="Enter Beer Name" onChange={handleChange}/>
-                        
-                        <button>Submit</button>
-
-                    </form>
-                </div> */}
-            <BreweryForm getBreweries={getBreweries}/>
-            {breweries.length ? breweriesLoaded(breweries) : <h2>Preparing NJ breweries</h2>}
-        </>
-
-    )
-}
-
-export default Breweries
+    
+    export default Breweries

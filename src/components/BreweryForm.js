@@ -4,7 +4,7 @@ const BreweryForm = ({ getBreweries}) => {
     
         // const URL = "https://njbeer-app-backend.onrender.com/breweries"
         const URL = "http://localhost:4000/breweries"
-        
+
     const [breweryForm, setBreweryForm] = useState({
         name: "",
         address: "",
@@ -32,7 +32,7 @@ const BreweryForm = ({ getBreweries}) => {
                 },
                 body: JSON.stringify(breweryForm)
             });
-            console.log(await newBrewery.json())
+            //console.log(await newBrewery.json())
 
             getBreweries();
             e.target.reset();
