@@ -1,3 +1,4 @@
+
 .websiteName {
   display: flex;
   justify-content: center;
@@ -12,6 +13,10 @@
   flex: 1;
   
 }
+.search {
+  display: flex;
+  border: 1px solid black;
+}
   
 .navText {
   text-decoration: none;
@@ -20,6 +25,7 @@
 
 .breweryForm {
   display: flex;
+
 }
 
 .forms {
@@ -40,7 +46,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: goldenrod;
   border: 1px solid black;
+
 }
 
 
@@ -51,6 +59,7 @@
   align-items: center;
   border: 1px solid black;
   flex: 1;
+
 }
 
 .imgdiv {

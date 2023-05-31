@@ -2,13 +2,12 @@
     import { useState, useRef} from "react";
     import BreweryData from "../../components/BreweryData";
     import BreweryForm from "../../components/BreweryForm";
-    import { useParams } from "react-router";
     import { getUserToken } from "../../utils/authToken";
     import { Button, TextField } from "@mui/material";
 
     const Breweries = ({ user }) => {
 
-        const { breweryId } = useParams();
+        // const { breweryId } = useParams();
         const URL = "https://njbeer-app-backend.onrender.com/breweries"
         // const URL = "http://localhost:4000/breweries"
         
@@ -90,9 +89,10 @@
         }
 
         return (
-            <>  
-                    <TextField className="search" size="small" id="outlined-search" label="Search field" type="search" ref={inputRef}/> 
+            <>  <div className="search">
+                    <TextField size="small" id="outlined-search" label="Search field" type="search" ref={inputRef}/> 
                     <Button size="small" variant="contained" onClick={handleSubmit} type="submit">Search</Button>
+                </div>
                 <div className="forms">
                     <h3>Know a brewery thats not on the list? </h3>
                     <BreweryForm getBreweries={getBreweries}/>

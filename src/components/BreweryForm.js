@@ -26,7 +26,7 @@ const BreweryForm = ({ getBreweries}) => {
     const handleSumbit = async (e) => {
         try{
             e.preventDefault();
-            const newBrewery = await fetch(URL, {
+            await fetch(URL, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
